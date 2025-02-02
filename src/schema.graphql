@@ -87,15 +87,32 @@ type PostEdge {
 
 input PostOrder {
   direction: OrderDirection!
+  field: PostOrderField!
+}
+
+"""Properties by which post connections can be ordered."""
+enum PostOrderField {
+  content
+  createdAt
+  id
+  published
+  title
+  updatedAt
 }
 
 type Query {
   hello(name: String!): String!
   helloWorld: String!
   me: User!
+  me1: RandomModel!
   post: Post!
   publishedPosts(orderBy: PostOrder, query: String): PostConnection!
   userPosts: [Post!]!
+}
+
+type RandomModel {
+  Field1: String!
+  Field2: String
 }
 
 """User role"""
